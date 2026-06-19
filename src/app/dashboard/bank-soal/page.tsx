@@ -5,6 +5,7 @@ import { DashboardLayout } from "@/components/layout/DashboardLayout";
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
 import { Badge } from "@/components/ui/Badge";
+import { AIGeneratorModal } from "@/components/ai/AIGeneratorModal";
 import { Plus, Search, Filter, Edit, Trash2, Sparkles, BookOpen } from "lucide-react";
 
 const soalData = [
@@ -64,6 +65,7 @@ const mapelColors: Record<string, string> = {
 export default function BankSoalPage() {
   const [search, setSearch] = useState("");
   const [filterMapel, setFilterMapel] = useState("semua");
+  const [showAI, setShowAI] = useState(false);
 
   const mapelList = ["semua", ...Array.from(new Set(soalData.map((s) => s.mapel)))];
   const filtered = soalData.filter((s) => {
@@ -117,7 +119,7 @@ export default function BankSoalPage() {
             ))}
           </div>
           <div className="ml-auto flex gap-2">
-            <Button variant="gold" leftIcon={<Sparkles className="h-4 w-4" />}>
+            <Button variant="gold" leftIcon={<Sparkles className="h-4 w-4" />} onClick={() => setShowAI(true)}>
               AI Generator
             </Button>
             <Button leftIcon={<Plus className="h-4 w-4" />}>
@@ -172,6 +174,15 @@ export default function BankSoalPage() {
           ))}
         </div>
       </div>
+      {showAI && (
+        <AIGeneratorModal
+          onClose={() => setShowAI(false)}
+          onAdd={(soalBaru) => {
+            console.log("Soal ditambahkan:", soalBaru);
+            setShowAI(false);
+          }}
+        />
+      )}
     </DashboardLayout>
   );
 }

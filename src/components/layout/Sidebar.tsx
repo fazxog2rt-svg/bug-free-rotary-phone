@@ -19,6 +19,10 @@ import {
   ChevronLeft,
   ChevronRight,
   School,
+  QrCode,
+  Trophy,
+  Globe,
+  FileCheck,
 } from "lucide-react";
 import { useState } from "react";
 import { Avatar } from "@/components/ui/Avatar";
@@ -83,6 +87,30 @@ const navItems = [
     href: "/dashboard/notifikasi",
     icon: Bell,
     roles: ["super_admin", "mudir", "admin_akademik", "guru", "musyrif", "santri", "orang_tua"],
+  },
+  {
+    label: "Hasil Ujian",
+    href: "/dashboard/hasil-ujian",
+    icon: Trophy,
+    roles: ["super_admin", "admin_akademik", "guru", "santri"],
+  },
+  {
+    label: "QR Card",
+    href: "/dashboard/qr-card",
+    icon: QrCode,
+    roles: ["super_admin", "admin_akademik"],
+  },
+  {
+    label: "Rapor Digital",
+    href: "/dashboard/rapor",
+    icon: FileCheck,
+    roles: ["super_admin", "mudir", "admin_akademik"],
+  },
+  {
+    label: "Multi Tenant",
+    href: "/dashboard/multi-tenant",
+    icon: Globe,
+    roles: ["super_admin"],
   },
   {
     label: "Pengaturan",
